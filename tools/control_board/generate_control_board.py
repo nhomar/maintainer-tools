@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """Script to generate travis/coverage status for a subset of org on
 github.
@@ -50,7 +50,7 @@ def generate_badge_file(username, password, org_name, exclude):
     org = gh.organization(org_name)
     pbar = ProgressBar(
         maxval=org.public_repos + org.private_repos
-    )
+    ).start()
     for i, repo in enumerate(org.iter_repos()):
         branch_names = set(branch.name for branch in repo.iter_branches())
         repo_branch_names[repo.name] = branch_names
